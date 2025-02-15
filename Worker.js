@@ -61,6 +61,7 @@ async function IdtoAdress(val) {
   const contract = new ethers.Contract(contractAddress, contractABI, provider);
   try {
     const result = await contract.idToAddress(val);
+    console.log(result)
     return result;
   } catch (error) {
     throw new Error("Error reading from contract: " + error.message);
@@ -109,7 +110,7 @@ const WorkerFun = async () => {
           const blockchainX1Level = await getCurrentX1Level(PersonalAdress);
           const blockchainX2Level = await getCurrentX2Level(PersonalAdress);
 
-          const dbUser = await User.findOne({ id: newReferral });
+          const dbUser = await User.findOne({ id: (Number) });
           if (!dbUser) {
             return;
           }
