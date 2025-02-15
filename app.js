@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
+const serverless = require("serverless-http");
 const cors = require('cors');
 const app = express();
 const port = 5000;
@@ -37,6 +38,12 @@ console.log("Function working");
 
 
 setInterval(Worker.WorkerFun, 120000);
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server is running on http://localhost:${port}`);
+// });
+
+
+module.exports.handler = serverless(app);
+
+
+

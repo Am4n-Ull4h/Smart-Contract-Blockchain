@@ -1,0 +1,19 @@
+service: theeagle
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1 # Change according to your needs
+  environment:
+    MONGO_URL: "mongodb+srv://thinkcodes57:mcV9eCK9QCDuQjwW@cluster0.dv2hu.mongodb.net/Solidity?retryWrites=true&w=majority&appName=Cluster0"
+    CONTRACT_ADDRESS: "0x8522FA19dB06f30653Ca8B4bf26D561adc94576e"
+    CONTRACT_ABI: '[{"type":"constructor","inputs":[{"name":"_usdtAddress","type":"address","internalType":"address"}],"stateMutability":"nonpayable"},...]'
+
+functions:
+  app:
+    handler: handler.main
+    events:
+      - http:
+          path: /
+          method: get
+
